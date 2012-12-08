@@ -19,6 +19,6 @@ def sumv2(k):
   while i < 3:
     n = (k - 1) / nums[i]
     an = nums[i] * n
-    sums[i] = n * (nums[i] + an) / 2
+    sums[i] = n * (nums[i] + an) / 2  # fun with integer division
     i += 1
   return sums[0] + sums[1] - sums[2]
