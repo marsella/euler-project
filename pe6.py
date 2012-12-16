@@ -8,9 +8,10 @@ def diff(n):
   s2 = sqofsums(n)
   print s2-s1
 
+# wait. range defaults to 0. that's sweet.
 def sumofsq(n):
   sum = 0
-  for i in range(0, n + 1):
+  for i in range(n + 1):
     sum += i * i
   return sum
 
@@ -19,6 +20,6 @@ def sqofsums(n):
   s = (n + 1) * (n / 2)
   if n % 2 != 0:
     s += (n / 2) + 1
-  print s * s
+  return s * s
 
 
