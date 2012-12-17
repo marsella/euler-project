@@ -27,22 +27,22 @@ def main():
   71636269561882670428252483600823257530420752963450"
 
 
-# this isn't working yet.
-# trying to convert string to an int array with one digit in each
-# but there's some weird characters in there, I think
-  length = len(strnum)
-  nums = [0 for i in range(length)]
-  j = 0
-  for i in range(length):
-    if strnum[j] == "":
-      j += 1
-    nums[i] = int(strnum[j])
+# managed to parse with isdigit(). string manipulation is important
+# nothing too tricky after that. 
+  nums = [0 for i in range(1000)]
+  i = 0
+  for j in range(len(strnum)):
+    if not strnum[j].isdigit():
+      continue
+    nums[i] = strnum[j]
+    i += 1
 
+#find max:
   max = -1
-  for i in range(length - 5):
+  for i in range(len(nums) - 5):
     num = 1
     for j in range(5):
-      num *= nums[i + j]
+      num *= int(nums[i + j])
     if num > max:
       max = num
 
