@@ -5,11 +5,10 @@ import pe3
 
 def sumprimes(k):
   sum = 2
-  # I think 1 doesn't count
   i = 3
   while i < k:
-  #for i in range(2, k):
-    if(pe3.isprime(i)):
+    # trying to speed it up by not calling isprime as often
+    if i % 3 != 0 and pe3.isprime(i):
       sum += i
     i += 2
   print sum
