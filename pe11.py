@@ -5,7 +5,7 @@ def main():
   findmax(nums)
 
 def getdata():
-  f = open("pe11.dat", "r")
+  f = open("pe11.test.dat", "r")
   nums = [[] for i in range(20)]
   i = 0
   for line in f:
@@ -18,41 +18,56 @@ def getdata():
       nums[i][j] = int(nums[i][j])
   return nums
 
-# so ugly. but it works
+# look! I can pass function arguments!
+# assumes an entirely positive array
+# assumes size 20x20
+# prints the max of 4-number sequences
 def findmax(nums):
-  max = -1
-  #rows
-  for i in range(20):
-    for j in range(16):
-      prod = 1
-      for k in range(4):
-        prod *= nums[i][j + k]
-      if prod > max:
-        max = prod
-  #cols
-  for i in range(16):
-    for j in range(20):
-      prod = 1
-      for k in range(4):
-        prod *= nums[i + k][j]
-      if prod > max:
-        max = prod
-  #diag right
-  for i in range(16):
-    for j in range(16):
-      prod = 1
-      for k in range(4):
-        prod *= nums[i + k][j + k]
-      if prod > max:
-        max = prod
-  #diag left
-  for i in range(4, 20):
-    for j in range(16):
-      prod = 1
-      for k in range(4):
-        prod *= nums[i - k][j + k]
-      if prod > max:
-        max = prod
-  print max 
+  lmax = [0 for i in range(4)]
+  lmax[0] = check(r, nums)
+  lmax[1] = check(c, nums)
+  lmax[2] = check(dr, nums)
+  lmax[3] = check(dl, nums)
+  print max(lmax) 
 
+def check(f, nums):
+  max = -1
+  for i in range(20):
+    for j in range(20):
+      prod = f(nums, i, j)
+      if prod > max:
+        max = prod
+  return max
+
+def r(nums, i, j):
+  prod = -1
+  if j < 17:
+    prod = 1
+    for k in range(4):
+      prod *= nums[i][j + k]
+  return prod
+
+def c(nums, i, j):
+  prod = -1
+  if i < 17:
+    prod = 1
+    for k in range(4):
+      prod *= nums[i + k][j]
+  return prod
+
+def dr(nums, i, j):
+  prod = -1
+  if i < 17 and j < 17:
+    prod = 1
+    for k in range(4):
+      prod *= nums[i + k][j + k]
+  return prod
+
+def dl(nums, i, j):
+  prod = -1
+  if i > 4 and j < 17:
+    prod = 1
+    for k in range(4):
+      prod *= nums[i - k][j + k]
+  return prod
 
