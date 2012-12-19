@@ -1,13 +1,18 @@
 #find the sum of all primes below 2 million
 # below 10 = 17
 
-import pe3
+# prime checking using a sieve
+def sieve(k):
+  nums = [i for i in range(k)]
+  nums[0] = nums[1] = 0
+  for p in range(k):
+    if nums[p] == 0: continue
+    i = 2
+    while p * i < k:
+      nums[p * i] = 0
+      i += 1
 
-def sumprimes(k):
-  sum = 2
-  i = 3
-  while i < k:
-    if pe3.isprime(i):
-      sum += i
-    i += 2
-  print sum
+  sum = 0
+  for i in range(k):
+    sum += nums[i]
+  print sum 
