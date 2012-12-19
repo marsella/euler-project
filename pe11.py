@@ -5,7 +5,7 @@ def main():
   findmax(nums)
 
 def getdata():
-  f = open("pe11.test.dat", "r")
+  f = open("pe11.dat", "r")
   nums = [[] for i in range(20)]
   i = 0
   for line in f:
