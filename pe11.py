@@ -4,6 +4,7 @@ def main():
   nums = getdata()
   findmax(nums)
 
+# learning file i/o
 def getdata():
   f = open("pe11.dat", "r")
   nums = [[] for i in range(20)]
@@ -18,26 +19,21 @@ def getdata():
       nums[i][j] = int(nums[i][j])
   return nums
 
-# look! I can pass function arguments!
+# this is unnecessarily complicated.
 # assumes an entirely positive array
 # assumes size 20x20
 # prints the max of 4-number sequences
 def findmax(nums):
-  lmax = [0 for i in range(4)]
-  lmax[0] = check(r, nums)
-  lmax[1] = check(c, nums)
-  lmax[2] = check(dr, nums)
-  lmax[3] = check(dl, nums)
-  print max(lmax) 
-
-def check(f, nums):
-  max = -1
+  lmax = [0 for i in range(5)]
+  lmax[0] = -1
   for i in range(20):
     for j in range(20):
-      prod = f(nums, i, j)
-      if prod > max:
-        max = prod
-  return max
+      lmax[1] = r(nums, i, j) 
+      lmax[2] = c(nums, i, j) 
+      lmax[3] = dr(nums, i, j) 
+      lmax[4] = dl(nums, i, j) 
+      lmax[0] = max(lmax)
+  print lmax[0] 
 
 def r(nums, i, j):
   prod = -1
