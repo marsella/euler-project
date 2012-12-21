@@ -1,4 +1,4 @@
-# find the largest prime factor of a number
+# find largest prime factor
 
 import random
 import math
@@ -28,9 +28,9 @@ def gpfv2(k):
 
 ############################################################################
 
-# I need a primality tester.
+# well gee. this is a lot like the crypto stuff I did earlier this year.
+# I probably need a primality tester.
 # I'll translate the one I wrote in c++
-# https://github.com/marsella/crypto
 def isprime(k, t=20):
   random.seed()
   while t > 0:
@@ -38,11 +38,11 @@ def isprime(k, t=20):
     # acts as witness that k is prime
     rand = math.floor(random.random() * (k-1) + 1)
     if egcd(rand, k) != 1:
-      return False
+      return 0
     if modexp(k, rand, k-1) != 1:
-      return False
+      return 0
     t -= 1
-  return True
+  return 1
   
 # greatest common denominator with dijkstra's algorithm
 def gcd(a, b): 

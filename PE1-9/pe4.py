@@ -26,3 +26,5 @@ def ispalv2(k):
     dig -= 2
   return True
 
+
+

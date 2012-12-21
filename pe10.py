@@ -3,7 +3,7 @@
 
 # prime checking using a sieve
 def sieve(k):
-  nums = [i for i in range(k)]
+  nums = [1 for i in range(k)]
   nums[0] = nums[1] = 0
   for p in range(k):
     if nums[p] == 0: continue
@@ -11,8 +11,12 @@ def sieve(k):
     while p * i < k:
       nums[p * i] = 0
       i += 1
+  return nums
 
+def getsum(k):
+  nums = sieve(k)
   sum = 0
   for i in range(k):
-    sum += nums[i]
+    if nums[i]:
+      sum += i
   print sum 

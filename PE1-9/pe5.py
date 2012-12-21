@@ -4,7 +4,6 @@
 #
 
 # n > 1
-# improved brute force
 def divisible(n):
   k = n * (n - 1)
   nums = [n - p for p in range(0, n/2)]
@@ -18,4 +17,5 @@ def divisible(n):
       print "FOUND IT:", k
       break
     found = True
-    k += n 
+    k += 20
+  print "DONE"

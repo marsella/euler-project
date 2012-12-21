@@ -22,3 +22,4 @@ def sqofsums(n):
     s += (n / 2) + 1
   return s * s
 
+
