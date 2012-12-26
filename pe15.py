@@ -2,7 +2,6 @@
 
 # can this be simplified?
 def maxpaths(k):
-  pathlen = k + k 
   num = fact(2*k)
   kf = fact(k)
   print num / (kf * kf)
