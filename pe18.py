@@ -1,10 +1,35 @@
 # triange path-sum
+# for problems 18 and 67
 
-# something is going on with triange orientation.
-# figure that out.
-def readdata(n):
+# the strategy is to work from the bottom, finding the max length of each 
+# number in the last row. Finds these recursively, saving the max length for
+# each number as it comes across them
+def pathsum(tri):
+  n = len(tri)
+  sums = [[-1 for i in range(n)] for j in range(n)]
+  print max(maxsum(tri, sums, n - 1, k) for k in range(n))
+
+# the sum of any number (i, j) is the max of the sums of the two numbers
+# above it (i - 1, j) and (i - 1, j - 1) plus the number itself
+def maxsum(tri, sums, i, j):
+  if i < 0 or j < 0: #out of bounds
+    return 0
+  if sums[i][j] != -1: #already calculated
+    return sums[i][j]
+  n = tri[i][j] + max(maxsum(tri, sums, i - 1, j - 1),
+                      maxsum(tri, sums, i - 1, j))
+  sums[i][j] = n
+  return n
+
+def main():
+  tri = readdata()
+  pathsum(tri)
+
+#---------------
+# reading in. this is still kind of clumsy.
+def readdata(n = 100):
   triangle = [[-1 for j in range(n)] for k in range(n)]
-  f = open('pe18.dat', 'r')
+  f = open('triangle.txt', 'r')
   i = 0
   for line in f:
     arr = str.split(line, ' ')
@@ -14,31 +39,13 @@ def readdata(n):
   # str to int
   for j in range(i):
     for k in range(j + 1):
-      if len(triangle[j][k]) == 3:
-        triangle[j][k] = triangle[j][k][:2]
-      triangle[j][k] = int(triangle[j][k])
+      t = triangle[j][k]
+      if len(t) == 3:
+        t = t[:2]
+      triangle[j][k] = int(t)
 
   return triangle
 
 
-def pathsum(tri):
-  n = len(tri)
-  sums = [[-1 for i in range(n)] for j in range(n)]
-  sums[0][0] = tri[0][0]
-
-  print max(maxsum(tri, sums, n - 1, k) for k in range(n))
 
 
-def maxsum(tri, sums, i, j):
-  if i < 0 or j < 0 :
-    return 0
-  if sums[i][j] != -1:
-    return sums[i][j]
-  n = tri[i][j] + max(maxsum(tri, sums, i - 1, j - 1),
-                      maxsum(tri, sums, i - 1, j))
-  sums[i][j] = n
-  return n
-
-def main():
-  tri = readdata(15)
-  pathsum(tri)
