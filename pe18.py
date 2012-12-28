@@ -4,7 +4,7 @@
 # figure that out.
 def readdata(n):
   triangle = [[-1 for j in range(n)] for k in range(n)]
-  f = open('pe18.test.dat', 'r')
+  f = open('pe18.dat', 'r')
   i = 0
   for line in f:
     arr = str.split(line, ' ')
@@ -18,28 +18,27 @@ def readdata(n):
         triangle[j][k] = triangle[j][k][:2]
       triangle[j][k] = int(triangle[j][k])
 
-  return tri
+  return triangle
 
 
 def pathsum(tri):
   n = len(tri)
   sums = [[-1 for i in range(n)] for j in range(n)]
   sums[0][0] = tri[0][0]
-  print max(maxsum(tri, sums, k, n - 1) for k in range(n))
+
+  print max(maxsum(tri, sums, n - 1, k) for k in range(n))
 
 
-def maxsum(tri, sums, j, i):
-  if i < 0 or j < 0:
+def maxsum(tri, sums, i, j):
+  if i < 0 or j < 0 :
     return 0
   if sums[i][j] != -1:
     return sums[i][j]
-  print i, j, tri[i][j]
   n = tri[i][j] + max(maxsum(tri, sums, i - 1, j - 1),
-                      maxsum(tri, sums, i, j - 1))
+                      maxsum(tri, sums, i - 1, j))
   sums[i][j] = n
   return n
 
 def main():
-  tri = readdata(4)
-  print tri
+  tri = readdata(15)
   pathsum(tri)
