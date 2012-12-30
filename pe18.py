@@ -32,17 +32,11 @@ def readdata(n = 100):
   f = open('triangle.txt', 'r')
   i = 0
   for line in f:
+    line = line.replace("\n", "")
     arr = str.split(line, ' ')
     for x in range(len(arr)):
-      triangle[i][x] = arr[x]
+      triangle[i][x] = int(arr[x])
     i += 1
-  # str to int
-  for j in range(i):
-    for k in range(j + 1):
-      t = triangle[j][k]
-      if len(t) == 3:
-        t = t[:2]
-      triangle[j][k] = int(t)
 
   return triangle
 
