@@ -6,7 +6,7 @@ def firsts():
   sundays = 0
   days = -5 #1901 starts on a Tues
   for i in range(1901, 2001):
-    if isleapyear(i): year[1] = 29
+    if is_leap_year(i): year[1] = 29
     else: year[1] = 28
     for m in range(12):
       if days % 7 == 0:
@@ -15,5 +15,5 @@ def firsts():
     days %= 7
   print sundays
 
-def isleapyear(year):
+def is_leap_year(year):
   return (not year % 400) or (year % 100) or (not year % 4)
