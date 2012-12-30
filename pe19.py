@@ -1,4 +1,5 @@
 # how many firsts of the months were Sundays in the 20th century?
+# http://projecteuler.net/problem=19
 
 def firsts():
   year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
@@ -15,10 +16,4 @@ def firsts():
   print sundays
 
 def isleapyear(year):
-  if year % 400 == 0:
-    return True
-  elif year % 100 == 0:
-    return False
-  elif year % 4 == 0:
-    return True
-  return False
+  return (not year % 400) or (year % 100) or (not year % 4)
