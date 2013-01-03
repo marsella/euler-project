@@ -1,4 +1,3 @@
-
 # What's the value of the first triangle number with over 500 divisors?
 
 import math
