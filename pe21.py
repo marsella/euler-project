@@ -14,7 +14,7 @@ def sumam(n):
 
 def d(n):
   ct = 1
-  for j in range(2, int(sqrt(n))):
+  for j in range(2, 1 + int(sqrt(n))):
     if not n % j: 
       ct += j + n/j
   return ct
