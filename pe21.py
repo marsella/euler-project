@@ -3,18 +3,26 @@
 
 
 def sumam(n):
-  d = sumdivisors(n + 1)
+  dv = [0 for i in range(n)]
+  for i in range(1, n):
+    dv[i] = sumdivisors(i)
   ct = 0
   for i in range(n):
-    if d[d[i]] == i:
+    if i == 220 or i == 284:
+      print d(d(i, dv), dv)
+    if d(d(i, dv), dv) == i and i != d(i, dv):
       ct += i
   return ct
 
+def d(n, dv):
+  if n < len(dv):
+    return dv[n]
+  return sumdivisors(n)
+
+#sexify me
 def sumdivisors(n):
-  d = [0 for i in range(n)]
-  for i in range(1, n):
-    ct = 0
-    for j in range(1, i/2 + 1):
-      if not i % j: ct += j
-    d[i] = ct
-  return d
+  ct = 0
+  for j in range(1, n/2 + 1):
+    if not n % j: ct += j
+  return ct
+
