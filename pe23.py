@@ -1,22 +1,24 @@
-
+# find the sum of all numbers that cannot be written as the sum of two amicable
+# numbers
+#projecteuler.net/problem=23
 
 from pe21 import d
 
-#doesn't work yet
-
 def fctn():
-  x = 28123
-  x = 25
-  abn = [d(i) > i for i in range(x/2 + 1)]
+  # all numbers above 28123 can be written as a sum
+  # actually, the upper limit is lower than this
+  x = 28124
+  #abn = abundant. Lazy variable names aren't readable
+  abn = []
+  for i in range(x):
+    if d(i) > i: abn.append(i)
   num = range(x)
-  # removes the sums of two abundant numbers within the range
-  for i in range(len(abn)): 
-    if not abn[i]: continue 
-    for j in range(i, len(abn)):
-      if not abn[j]: continue
+  # removes the sums
+  for i in abn: 
+    for j in abn[abn.index(i):]:
+      if i + j >= len(num): continue
       num[i + j] = 0
   print sum(num)
 
 
 fctn()
-print sum(range(24))
