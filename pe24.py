@@ -19,6 +19,3 @@ final = lexo(seq)
 print final[1000000]
 print time.time() - stime
 
-
-
-

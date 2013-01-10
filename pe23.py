@@ -1,5 +1,4 @@
-# find the sum of all numbers that cannot be written as the sum of two amicable
-# numbers
+# find the sum of all numbers that cannot be written as the sum of two amicable numbers
 #projecteuler.net/problem=23
 
 from pe21 import d

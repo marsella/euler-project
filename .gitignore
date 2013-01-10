@@ -1,2 +1,4 @@
 *.pyc
 problems.txt
+*.txt
+*~
