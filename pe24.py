@@ -16,6 +16,6 @@ import time
 stime = time.time()
 seq = [str(x) for x in range(10)]
 final = lexo(seq)
-print final[1000000]
+print final[1000000 - 1]
 print time.time() - stime
 
