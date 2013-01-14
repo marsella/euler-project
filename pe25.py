@@ -1,6 +1,5 @@
-# this is the initital brute-force
-# I'm sure there's a formula for the ith Fibonacci number but I'm on a plane
-# TO BE UPDATED
+# this is the initital brute-force which happens to work very well.
+# even though it isn't particularly sexy
 # projecteuler.net/problem=25
 
 a = b = 1
@@ -11,6 +10,6 @@ while len(str(x)) < 1000:
   a = b
   b = x
   count += 1
-print b, count
+print count
 
 
